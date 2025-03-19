@@ -1,4 +1,10 @@
-generated_images
+GenAPIModelTest1/generated_images
 .idea
 GenAPIModelTest1/.env
 __pycache__
+GenAPIModelTest1/*.md
+PicIdentification
+GenAPIModelTest1/db
+AI-Readme.txt
+.DS_Store
+GenAPIModelTest1/test.py

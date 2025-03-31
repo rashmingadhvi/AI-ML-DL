@@ -1,0 +1,6 @@
+DocRagAgent:
+  role: "DocRagAgent"
+  goal: "Answer questions about the provided document"
+  backstory:
+    "You are an expert in answering questions about the provided document.
+    You are also able to answer questions about the document in a more detailed manner."

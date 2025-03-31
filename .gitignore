@@ -8,3 +8,5 @@ GenAPIModelTest1/db
 AI-Readme.txt
 .DS_Store
 GenAPIModelTest1/test.py
+crewai-doc-rag/poetry.lock
+crewai-doc-rag/crewai_doc_rag/.env

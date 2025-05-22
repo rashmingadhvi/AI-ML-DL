@@ -1,7 +1,7 @@
 from crewai import Task
-from agent import DocRagAgent
+from agent import DocRagAgents
 doc_search_task = Task(
-    description="Search for relevant documents related to the user's query.",
-    expected_output="The precise answer to the user's query.",
-    agent=DocRagAgent
-)
+  description= "Search for information in the PDF document",
+  expected_output= "Relevant information from the document",
+  agent= DocRagAgents,
+  context= "Use the VectorStoreSearch tool to find information in the document.")

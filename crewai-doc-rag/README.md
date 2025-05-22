@@ -31,3 +31,9 @@ The project uses environment variables for configuration. Create a `.env` file w
 ## Contact
 
 [rashmingadhvi@proton.me]
+
+## Run steps
+
+1. Start Ollma engine:
+2. Run the app.py: python3 <FilePath>/app.py
+3. Run the streamlit UI

@@ -1,27 +1,23 @@
-[project]
+[tool.poetry]
 name = "crewai-doc-rag"
 version = "0.0.1"
 description = "A Simple RAG app for document search"
-authors = [
-    {name = "Rashmin Gadhvi",email = "rashmingadhavi@proton.me"}
-]
-license = {text = "IIT"}
+authors = ["Rashmin Gadhvi <rashmingadhavi@proton.me>"]
+license = "IIT"
 readme = "README.md"
-packages = [{include = "crewai_doc_rag"}]
+package-mode = false
 
-requires-python = ">=3.12,<3.13"
-
-
-
-dependencies = [
-    "crewai>=0.108.0,<0.109.0",
-    "crewai-tools>=0.38.1,<0.39.0",
-    "databricks-sdk (>=0.47.0,<0.48.0)",
-    "ollama (>=0.4.7,<0.5.0)",
-    "streamlit (>=1.44.0)"
-    
-]
-
+[tool.poetry.dependencies]
+python = ">=3.12,<3.13"
+crewai = ">=0.108.0,<0.109.0"
+crewai-tools = ">=0.38.1,<0.39.0"
+databricks-sdk = ">=0.47.0,<0.48.0"
+ollama = ">=0.4.7,<0.5.0"
+streamlit = ">=1.44.0"
+langchain = ">=0.3.25,<0.4.0"
+pydantic = ">=2.11.5,<3.0.0"
+streamlit-elements = ">=0.1.0,<0.2.0"
+watchdog = ">=6.0.0,<7.0.0"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

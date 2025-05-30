@@ -1,0 +1,23 @@
+doc_search_task:
+  description: "Answer the customer's questions based on the attention PDF.
+    The research agent will search through the PDF to find relevant answers.
+    Your final answer MUST be clear and accurate, based on the content of the
+    attention PDF.
+    Here is the customer's question:
+    {input_query}"
+  expected_output:
+    "Provide clear and accurate answers to the customer's questions based on the content of the attention PDF.
+    Write the answer in the output file."
+retrieval_task:
+  description: >
+    Retrieve the most relevant information from the available sources for the user query: {query}
+  expected_output: >
+    The most relevant information in form of text as retrieved from the sources.
+  agent: rag_agent
+
+response_task:
+  description: >
+    Synthesize the final response for the user query: {query}
+  expected_output: >
+    A concise and coherent response based on the retrieved infromation from the right source for the user query: {query}. If you are not ble to retrieve the information then respond with "I'm sorry, I couldn't find the information you're looking for."
+  agent: rag_agent

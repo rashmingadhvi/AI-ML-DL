@@ -1,0 +1,17 @@
+[project]
+name = "DocRagApp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "crewai>=0.121.1",
+    "crewai-tools>=0.45.0",
+    "langchain>=0.3.25",
+    "langchain-ollama>=0.3.3",
+    "litellm>=1.68.0",
+    "ollama>=0.4.9",
+    "streamlit>=1.45.1",
+    "streamlit-elements>=0.1.0",
+    "watchdog>=6.0.0",
+]

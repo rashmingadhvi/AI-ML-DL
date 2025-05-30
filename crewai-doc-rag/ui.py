@@ -3,12 +3,12 @@ import streamlit as st
 from streamlit_elements import elements, mui, html
 
 import os
-st.session_state.messages= []
-st.session_state.messages.append({"role": "assistant", "content": "How can I help you?"})
+
 
 
 file_path = os.path.join(os.path.dirname(__file__), '../output_1.txt')
 #st.markdown("file path = "+file_path)
+
 result = ""
 try:
         with open(file_path, 'r') as f:
@@ -27,6 +27,15 @@ def onClickRun():
 container = st.sidebar.container()
 
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []  # Chat history
+
+if "pdf_tool" not in st.session_state:
+    st.session_state.pdf_tool = None  # Store the PDFSearchTool
+
+
+if "crew" not in st.session_state:
+    st.session_state.crew = None  
 
 with container:
 
@@ -61,3 +70,11 @@ for msg1 in st.session_state.messages:
         else:
                 aimsg.write(msg1["content"])
 
+prompt = st.chat_input("Write a questions about the PDF")
+
+if prompt:
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        with st.chat_message("user"):
+                st.markdown(prompt)
+        with st.chat_message("assistance"):
+                st.markdown(prompt)

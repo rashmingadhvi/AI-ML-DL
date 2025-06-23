@@ -1,13 +1,13 @@
 # MCP Server (Python)
 
-This directory contains an MCP server that exposes a tool to fetch user data from the Node.js microservice.
+This directory contains MCP servers that expose a tool to fetch user data from the Node.js microservice.
 
 ## Prerequisites
 
 - Python 3.9+
 - Install dependencies:
   ```bash
-  pip install httpx mcp
+  pip install httpx mcp fastmcp
   ```
 - The Node.js microservice must be running (see `nodesvc/README.md`).
 
@@ -21,39 +21,72 @@ npm install
 npm start
 ```
 
-### 2. Run the MCP Server
+### 2. Run MCP Servers
+
+#### FastMCP HTTP Server
+
+```bash
+python fastmcpserver.py
+```
+
+Runs on `http://localhost:9000`
+
+#### Standard MCP Server (stdio)
 
 ```bash
 python mcpserver.py
 ```
 
-### 3. Run get_users Tool
+### 3. Call MCP Server (3 Ways)
 
-Create a test script to call the MCP tool:
+#### Method 1: VS Code MCP Extension (HTTP)
 
-```bash
-python -c "import asyncio; from mcpserver import get_users; print(asyncio.run(get_users()))"
-```
-
-## VS Code Configuration
-
-To configure the MCP server in VS Code user settings, add this to your `settings.json`:
+Add to VS Code `settings.json`:
 
 ```json
 {
-  "mcp.servers": {
-    "user-data-server": {
-      "command": "python",
-      "args": ["/path/to/your/project/mcpserver.py"],
-      "env": {}
+  "mcp": {
+    "servers": {
+      "my-user-mcp-http": {
+        "type": "http",
+        "url": "http://localhost:9000"
+      }
     }
   }
 }
 ```
 
-Replace `/path/to/your/project/` with the actual path to your project directory.
+Start `fastmcpserver.py` first, then use VS Code MCP commands.
+
+#### Method 2: VS Code MCP Extension (stdio)
+
+Add to VS Code `settings.json`:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "my-user-mcp-stdio": {
+        "type": "stdio",
+        "command": "python",
+        "args": ["/path/to/project/fastmcpserver.py"]
+      }
+    }
+  }
+}
+```
+
+VS Code auto-launches the server.
+
+#### Method 3: Direct Script Call
+
+```bash
+python get_users_via_mcp.py
+```
+
+Calls the FastMCP HTTP server directly.
 
 ## Usage
 
-- The MCP server exposes a `get_users` tool that fetches user data from `http://localhost:3000/users`
+- Both servers expose a `get_users` tool that fetches user data from `http://localhost:3000/users`
 - Returns formatted JSON user data or error message if microservice is unavailable

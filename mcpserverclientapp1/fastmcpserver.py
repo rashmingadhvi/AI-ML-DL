@@ -10,10 +10,9 @@ import json
 import httpx
 from fastmcp import FastMCP
 
-# Initialize the FastMCP server with a name and version
+# Initialize the FastMCP server with HTTP transport
 mcp = FastMCP(
     name="user-data-mcp-server"
-    
 )
 
 @mcp.tool
@@ -37,4 +36,5 @@ def get_users() -> str:
         return f"Error fetching users: {str(e)}"
 
 if __name__ == "__main__":
-    mcp.run()
+    # Run as HTTP server on port 9000
+    mcp.run(transport="streamable-http", host="localhost", port=9000)
